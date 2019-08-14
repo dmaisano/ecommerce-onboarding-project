@@ -1,20 +1,22 @@
 <template>
-  <div id="app" class="antialiased">
+  <div id="app" class="bg-gray-200 min-h-full antialiased">
     <Header />
 
     <main class="m-10">
-      <h1 class="text-indigo-600">hello</h1>
+      <ItemsList />
     </main>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header";
+import ItemsList from "./components/ItemsList";
 
 export default {
   name: "app",
   components: {
     Header,
+    ItemsList,
   },
 };
 </script>
