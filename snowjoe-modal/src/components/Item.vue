@@ -1,5 +1,7 @@
 <template>
-  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+  <h1>{{ modelNumber }}</h1>
+
+  <!-- <div class="max-w-sm rounded overflow-hidden shadow-lg">
     <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains" />
     <div class="px-6 py-4">
       <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
@@ -23,7 +25,7 @@
         >#winter</span
       >
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -31,6 +33,13 @@ export default {
   name: "Item",
   data() {
     return {};
+  },
+  props: {
+    modelNumber: String,
+    name: Number,
+    description: String,
+    image: Object,
+    price: String,
   },
 };
 </script>

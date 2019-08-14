@@ -2,20 +2,42 @@
   {
     "modelNumber": "SPX3000",
     "name": "Sun Joe SPX3000",
-    "description": "Electric Pressure Washer | 2030 PSI Max",
-    "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81tTU9sDjbL._SL1500_.jpg",
-    "price": 199.99,
-    "ratings": 6921,
-    "stars": 4
+    "description": "Electric Pressure Washer | 2030 Max PSI",
+    "image": {
+      "static": "https://snowjoe.imgix.net/product-images/SPX3000-3.jpg?auto=compress&fm=webp&w=300",
+      "hover": "https://snowjoe.imgix.net/product-images/SPX3000_01.jpg?auto=compress&fm=webp&w=300"
+    },
+    "price": "149.00"
   },
   {
     "modelNumber": "SPX3000-MAX",
     "name": "Sun Joe SPX3000-MAX",
-    "description": "Electric Pressure Washer | 2800 PSI Max",
-    "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81tTU9sDjbL._SL1500_.jpg",
-    "price": 199.99,
-    "ratings": 6921,
-    "stars": 4,
+    "description": "Electric Pressure Washer | 2800 Max PSI",
+    "image": {
+      "static": "https://snowjoe.imgix.net/product-images/SPX3000MAX_Image01.jpg?auto=compress&fm=webp&w=300",
+      "hover": "https://snowjoe.imgix.net/product-images/SPX3000MAX_Image02.jpg?auto=compress&fm=webp&w=300"
+    },
+    "price": "189.99",
     "onSale": true
+  },
+  {
+    "modelNumber": "SPX1501",
+    "name": "Sun Joe SPX1501",
+    "description": "Electric Pressure Washer | 1800 Max PSI",
+    "image": {
+      "static": "https://snowjoe.imgix.net/product-images/SPX1501-5.jpg?auto=compress&fm=webp&w=300",
+      "hover": "https://snowjoe.imgix.net/product-images/SPX1501-2.jpg?auto=compress&fm=webp&w=300"
+    },
+    "price": "119.00"
+  },
+  {
+    "modelNumber": "SPX3001",
+    "name": "Sun Joe SPX3001",
+    "description": "Electric Pressure Washer | 2030 Max PSI",
+    "image": {
+      "static": "https://snowjoe.imgix.net/product-images/SPX3001_unit1_4-8-2016-10-42-26.jpg?auto=compress&fm=webp&w=300",
+      "hover": "https://snowjoe.imgix.net/product-images/SPX3001_01.jpg?auto=compress&fm=webp&w=300"
+    },
+    "price": "179.00"
   }
 ]
