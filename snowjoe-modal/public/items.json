@@ -1,5 +1,6 @@
 [
   {
+    "id": "a6194536-eb0d-4183-8f6c-dee23850bbc7",
     "modelNumber": "SPX3000",
     "name": "Sun Joe SPX3000",
     "description": "Electric Pressure Washer | 2030 Max PSI",
@@ -10,6 +11,7 @@
     "price": "149.00"
   },
   {
+    "id": "46fe68dd-e328-4b10-9533-1bf314a8c20c",
     "modelNumber": "SPX3000-MAX",
     "name": "Sun Joe SPX3000-MAX",
     "description": "Electric Pressure Washer | 2800 Max PSI",
@@ -21,6 +23,7 @@
     "onSale": true
   },
   {
+    "id": "d01e8b9e-85de-4f8a-be14-373da462e7b2",
     "modelNumber": "SPX1501",
     "name": "Sun Joe SPX1501",
     "description": "Electric Pressure Washer | 1800 Max PSI",
@@ -31,6 +34,7 @@
     "price": "119.00"
   },
   {
+    "id": "430388f0-b8bb-447f-a263-3439297797ea",
     "modelNumber": "SPX3001",
     "name": "Sun Joe SPX3001",
     "description": "Electric Pressure Washer | 2030 Max PSI",

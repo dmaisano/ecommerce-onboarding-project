@@ -22,21 +22,19 @@ export default {
   mounted: async function() {
     try {
       // fetch the mock items data
+      // ? using fetch here in order to simulate retrieving data via HTTP through an arbitrary DB or API
       let items = await fetch("/items.json").then((res) => res.json());
 
       console.log(items);
 
       this.items = items;
     } catch (error) {
-      console.error({ erorr });
+      console.error({
+        error,
+      });
 
       // TODO: show error modal
     }
-  },
-  updated: function() {
-    this.$nextTick(function() {
-      console.log("owo");
-    });
   },
 };
 </script>
