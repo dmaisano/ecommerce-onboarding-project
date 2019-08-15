@@ -5,16 +5,46 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    cart: [],
-  },
-  mutations: {
-    ADD_CART_ITEM: (state, payload) => {
-      // the spread syntax has the same performance as Array.prototype.push.apply
-      // when working with large arrays it is better to use concat() for performance
-      state.cart = [...state.cart, payload];
+    shoppingItems: [],
+    cart: {
+      items: [],
+      totalItems: 0,
     },
   },
-  actions: {},
+  mutations: {
+    SET_SHOPPING_ITEMS: (state, payload) => {
+      state.shoppingItems = payload;
+    },
+    ADD_CART_ITEM: (state, payload) => {
+      const itemIndex = state.cart.items.findIndex(
+        (item) => item.modelNumber === payload.modelNumber,
+      );
+
+      if (itemIndex !== -1) {
+        state.cart.items[itemIndex].quantity++;
+        state.cart.totalItems++;
+      } else {
+        // the spread syntax has the same performance as Array.prototype.push.apply
+        // when working with large arrays it is better to use concat() for performance
+        state.cart = {
+          items: [
+            ...state.cart.items,
+            {
+              ...payload,
+              quantity: 1,
+            },
+          ],
+          totalItems: ++state.cart.totalItems,
+        };
+      }
+    },
+  },
+  actions: {
+    setShoppingItems: ({ commit, state }, items) => {
+      commit("SET_SHOPPING_ITEMS", items);
+      return state.shoppingItems;
+    },
+  },
   getters: {
     cart: (state) => {
       return state.cart;

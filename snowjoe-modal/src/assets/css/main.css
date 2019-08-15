@@ -8,12 +8,24 @@
   @apply font-bold py-2 px-4 rounded-sm;
 }
 
+.btn-disabled {
+  @apply text-white bg-gray-700 border-2 border-gray-700 cursor-not-allowed;
+}
+
 .btn-brand {
   @apply text-brand-500 bg-white border-2 border-brand-500;
 }
 
 .btn-brand:hover {
   @apply text-white bg-brand-500;
+}
+
+.btn-brand-solid {
+  @apply text-white bg-brand-500 border-2 border-brand-500;
+}
+
+.btn-brand-solid:hover {
+  @apply bg-brand-700 border-brand-700;
 }
 
 .btn-brand:focus {
@@ -33,4 +45,9 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+}
+
+.modal-wrapper body {
+  overflow: hidden;
+  overflow-y: hidden;
 }

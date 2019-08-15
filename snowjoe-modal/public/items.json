@@ -8,7 +8,7 @@
       "static": "https://snowjoe.imgix.net/product-images/SPX3000-3.jpg?auto=compress&fm=webp&w=300",
       "hover": "https://snowjoe.imgix.net/product-images/SPX3000_01.jpg?auto=compress&fm=webp&w=300"
     },
-    "price": "149.00"
+    "price": "149.50"
   },
   {
     "id": "46fe68dd-e328-4b10-9533-1bf314a8c20c",
@@ -43,5 +43,53 @@
       "hover": "https://snowjoe.imgix.net/product-images/SPX3001_01.jpg?auto=compress&fm=webp&w=300"
     },
     "price": "179.00"
+  },
+  {
+    "id": "a8119327-6044-45ae-b59e-6c282f62c129",
+    "modelNumber": "SPX-25HD",
+    "name": "Sun Joe 25-FT Universal Heavy-Duty Extension Pressure Washer Hose for SPX Series",
+    "description": "Extension Hose",
+    "image": {
+      "static": "https://snowjoe.imgix.net/product-images/SPX25-HD_Image1_3000x3000.jpg?auto=compress&fm=webp&w=300",
+      "hover": "https://snowjoe.imgix.net/product-images/SPX25-HD_Image3_3000x3000.jpg?auto=compress&fm=webp&w=300"
+    },
+    "price": "34.99",
+    "recommended": true
+  },
+  {
+    "id": "f67e0bf3-1c1f-4f90-a75f-5af77999ba3f",
+    "modelNumber": "SPX-FC34",
+    "name": "Sun Joe Foam Cannon for SPX Series Electric Pressure Washers",
+    "description": "Foam Cannon | 34 Oz.",
+    "image": {
+      "static": "https://snowjoe.imgix.net/product-images/SPX-FC34_1_4-11-2016-09-06-55.jpg?auto=compress&fm=webp&w=300",
+      "hover": "https://snowjoe.imgix.net/product-images/Spx-FC34_3.jpg?auto=compress&fm=webp&w=300"
+    },
+    "price": "39.99",
+    "recommended": true
+  },
+  {
+    "id": "b735a9fa-d2cf-4979-9278-d7e883042bb0",
+    "modelNumber": "SPX-PWB1",
+    "name": "Sun Joe Power Scrubbing Broom for SPX Series Pressure Washers",
+    "description": "Scrubbing Broom",
+    "image": {
+      "static": "https://snowjoe.imgix.net/product-images/SPX-PWB1-1.jpg?auto=compress&fm=webp&w=300",
+      "hover": "https://snowjoe.imgix.net/product-images/Spx-PWB1_4.jpg?auto=compress&fm=webp&w=300"
+    },
+    "price": "39.99",
+    "recommended": true
+  },
+  {
+    "id": "0852e39f-65ac-4b90-ae07-eb269aea0a28",
+    "modelNumber": "SPX-APC1G",
+    "name": "Sun Joe All-Purpose Heavy Duty Pressure Washer Rated Cleaner + Degreaser",
+    "description": "Cleaner + Degreaser | 1 Gal.",
+    "image": {
+      "static": "https://snowjoe.imgix.net/product-images/SPX-APC1G-01.jpg?auto=compress&fm=webp&w=300",
+      "hover": "https://snowjoe.imgix.net/product-images/SPX-APC1G-03.jpg?auto=compress&fm=webp&w=300"
+    },
+    "price": "19.99",
+    "recommended": true
   }
 ]

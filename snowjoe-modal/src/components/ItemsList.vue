@@ -1,12 +1,16 @@
 <template>
-  <div id="list-wrapper">
-    <Item
-      id="item"
-      class="mb-6"
-      v-for="(item, index) in items"
-      :key="index"
-      :item="item"
-    ></Item>
+  <div>
+    <div id="list-wrapper">
+      <Item
+        id="item"
+        class="mb-6 md:mb-0"
+        v-for="(item, index) in items"
+        :key="index"
+        :item="item"
+      ></Item>
+    </div>
+
+    <!-- <Modal> </Modal> -->
   </div>
 </template>
 
@@ -26,9 +30,13 @@ export default {
   mounted: async function() {
     try {
       // ? using fetch here in order to simulate retrieving data via HTTP through an arbitrary DB or backend API
-      let items = await fetch("/items.json").then((res) => res.json());
-
-      this.items = items;
+      // could also use await here if desired (async/await)
+      fetch("/items.json")
+        .then((response) => response.json())
+        .then((items) => this.$store.dispatch("setShoppingItems", items))
+        .then((items) => {
+          this.items = items;
+        });
     } catch (error) {
       console.error({
         error,
