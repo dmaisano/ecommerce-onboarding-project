@@ -1,8 +1,8 @@
 <template>
-  <div id="app" class="bg-gray-200 min-h-full antialiased">
+  <div id="app" class="bg-gray-100 min-h-full antialiased">
     <Header />
 
-    <main class="m-10">
+    <main class="p-8">
       <ItemsList />
     </main>
   </div>
