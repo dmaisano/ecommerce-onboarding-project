@@ -53,7 +53,7 @@
         class="block lg:hidden py-4 bg-white w-full flex border-b-2 border-gray-900"
       >
         <div
-          class="img-wrapper w-1/4"
+          class="img-wrapper flex items-center w-1/4"
           @mouseover="imageUrl = item.image.hover"
           @mouseleave="imageUrl = item.image.static"
         >

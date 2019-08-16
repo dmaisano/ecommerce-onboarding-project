@@ -1,6 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import store from "./store";
+import router from './router'
 
 Vue.config.productionTip = false;
 
@@ -20,12 +21,6 @@ Vue.filter("truncate", function(text, maxLength = 30) {
   }
 
   return `${res.trim()}...`;
-
-  // if (text.length >= maxLength) {
-  //   return `${text.substring(0, maxLength).trim()}...`;
-  // } else {
-  //   return text.trim();
-  // }
 });
 
 Vue.filter("price", function(itemPrice) {
@@ -34,5 +29,6 @@ Vue.filter("price", function(itemPrice) {
 
 new Vue({
   store,
-  render: (h) => h(App),
+  router,
+  render: (h) => h(App)
 }).$mount("#app");

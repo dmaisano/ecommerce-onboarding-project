@@ -41,6 +41,29 @@
             }"
           />
         </div>
+
+        <div class="mt-2">
+          <button class="btn btn-brand-solid w-full" @click="addAllRecommended">
+            Add These {{ recommendedItems.length }} Items and save 10%
+          </button>
+
+          <div class="pt-4 flex items-start justify-end -mx-2">
+            <div class="px-2">
+              <button
+                class="block mt-1 text-gray-700 capitalize underline hover:text-gray-900 focus:font-bold focus:shadow-none"
+                style="box-shadow: none;"
+                @click="toggleModal"
+              >
+                No Thanks
+              </button>
+            </div>
+            <div class="px-2">
+              <button class="btn btn-brand" @click="checkout">
+                Continue To Checkout
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </Modal>
   </div>
@@ -91,6 +114,15 @@ export default {
   methods: {
     toggleModal: function() {
       this.$store.dispatch("setRecommendedModal", !this.recommendedModal);
+    },
+    addAllRecommended: function() {
+      for (const item of this.recommendedItems) {
+        this.$store.dispatch("addCartItem", item);
+      }
+    },
+    checkout: function() {
+      this.$store.dispatch("setRecommendedModal", false);
+      this.$store.dispatch("setCartModal", true);
     },
   },
 };

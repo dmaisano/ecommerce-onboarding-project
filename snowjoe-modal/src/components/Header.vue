@@ -13,7 +13,7 @@
       <div
         id="cart"
         class="font-medium inline-flex items-center px-4 text-gray-400 cursor-pointer hover:font-bold hover:text-white"
-        @click="cartVisiblity = !cartVisiblity"
+        @click="toggleCart(true)"
       >
         <p class="hidden md:block">Cart</p>
         <svg
@@ -40,72 +40,6 @@
         </span>
       </div>
     </header>
-
-    <Modal
-      v-if="cart.items.length && cartVisiblity"
-      v-bind="{
-        customClass: 'cart-modal',
-        visibility: cartVisiblity,
-        close: toggleCart,
-      }"
-    >
-      <h1 class="text-xl md:text-2xl text-gray-900 font-semibold text-center">
-        Shopping Cart
-      </h1>
-      <div class="cart-table-head mt-3 mb-2">
-        <p class="inline-flex items-center text-lg font-semibold">
-          Item
-        </p>
-        <p class="inline-flex items-center text-lg font-semibold">
-          Unit Price
-        </p>
-        <p class="inline-flex items-center text-lg font-semibold uppercase">
-          QTY
-        </p>
-        <p class="inline-flex items-center text-lg font-semibold">
-          Total
-        </p>
-      </div>
-      <div
-        class="cart-table-item text-sm md:text-base"
-        v-for="(item, index) in cart.items"
-        :key="index"
-      >
-        <p class="text-justify block md:hidden">
-          {{ item.name | truncate(12) }}
-        </p>
-        <p class="text-justify hidden md:block">
-          {{ item.name | truncate }}
-        </p>
-        <p class="inline-flex items-center font-semibold">${{ item.price }}</p>
-        <p class="inline-flex items-center">
-          {{ item.quantity }}
-        </p>
-        <p class="inline-flex items-center font-semibold">
-          {{ (item.price * item.quantity) | price }}
-        </p>
-      </div>
-
-      <p class="mt-4 text-lg flex justify-center">
-        <span class="text-gray-800 font-semibold">Total: </span>
-        <span class="ml-2">{{ cartTotal | price }}</span>
-      </p>
-
-      <div class="mt-4 cart-actions w-full flex flex-col md:flex-row md:-mx-1">
-        <button
-          @click="toggleCart"
-          class="mb-2 mx-auto md:mx-1 md:mb-0 w-3/4 md:w-1/2 btn btn-brand"
-        >
-          Keep Shopping
-        </button>
-        <button
-          @click="toggleCart"
-          class="mx-auto md:mx-1 w-3/4 md:w-1/2 btn btn-brand-solid"
-        >
-          Checkout
-        </button>
-      </div>
-    </Modal>
   </div>
 </template>
 
@@ -117,22 +51,21 @@ export default {
   components: {
     Modal,
   },
-  data: function() {
-    return {
-      cartVisiblity: false,
-    };
-  },
   computed: {
     cart: function() {
       return this.$store.getters.cart;
     },
-    cartTotal() {
+    cartTotal: function() {
       return this.$store.getters.cartTotal;
+    },
+    cartModal: function() {
+      return this.$store.getters.cartModal;
     },
   },
   methods: {
-    toggleCart: function() {
-      this.cartVisiblity = !this.cartVisiblity;
+    toggleCart: function(payload) {
+      // console.log(payload);
+      this.$store.dispatch("setCartModal", payload);
     },
   },
 };

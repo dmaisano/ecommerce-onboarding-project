@@ -3,20 +3,17 @@
     <Header />
 
     <main class="p-8">
-      <ItemsList />
+      <router-view />
     </main>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header";
-import ItemsList from "./components/ItemsList";
 
 export default {
-  name: "app",
   components: {
     Header,
-    ItemsList,
   },
 };
 </script>

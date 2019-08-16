@@ -11,7 +11,7 @@ export default new Vuex.Store({
       items: [],
       totalItems: 0,
     },
-    checkoutVisibility: false,
+    cartModal: false,
     recommendedModal: false,
   },
   mutations: {
@@ -44,6 +44,12 @@ export default new Vuex.Store({
         };
       }
     },
+    SET_CART_MODAL: (state, payload) => {
+      console.log({
+        payload,
+      });
+      state.cartModal = payload;
+    },
     SET_RECOMMENDED_MODAL: (state, payload) => {
       state.recommendedModal = payload;
     },
@@ -60,6 +66,10 @@ export default new Vuex.Store({
     addCartItem: ({ commit, state }, item) => {
       commit("ADD_CART_ITEM", item);
       return state.item;
+    },
+    setCartModal: ({ commit, state }, payload) => {
+      commit("SET_CART_MODAL", payload);
+      return state.cartModal;
     },
     setRecommendedModal: ({ commit, state }, payload) => {
       commit("SET_RECOMMENDED_MODAL", payload);
@@ -97,6 +107,9 @@ export default new Vuex.Store({
       }
 
       return items;
+    },
+    cartModal: (state) => {
+      return state.cartModal;
     },
     recommendedModal: (state) => {
       return state.recommendedModal;
