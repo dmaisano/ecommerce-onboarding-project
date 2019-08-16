@@ -10,6 +10,8 @@
       style="top: 50%; left: 50%;"
     >
       <slot></slot>
+
+      <!-- close button -->
       <button
         title="Close"
         class="close-modal text-gray-500 text-gray-700"
@@ -45,7 +47,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="postcss" scoped>
 .modal .modal-content {
   top: 50%;
@@ -56,8 +57,8 @@ export default {
 
 .modal .close-modal {
   position: absolute;
-  right: 1rem;
-  top: 0.75rem;
+  right: 0.75rem;
+  top: 0.5rem;
   cursor: pointer;
   font-size: 1.15rem;
   opacity: 0.5;

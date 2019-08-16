@@ -1,12 +1,12 @@
 import Vue from "vue";
 import App from "./App.vue";
 import store from "./store";
-import router from './router'
+import router from "./router";
 
 Vue.config.productionTip = false;
 
 // custom filters
-Vue.filter("truncate", function(text, maxLength = 30) {
+Vue.filter("truncate", (text, maxLength = 30) => {
   if (text.length < maxLength) return text.trim();
 
   let res = "";
@@ -23,12 +23,12 @@ Vue.filter("truncate", function(text, maxLength = 30) {
   return `${res.trim()}...`;
 });
 
-Vue.filter("price", function(itemPrice) {
+Vue.filter("price", (itemPrice = 0) => {
   return `$${itemPrice.toFixed(2)}`;
 });
 
 new Vue({
   store,
   router,
-  render: (h) => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

@@ -154,14 +154,11 @@ export default {
     this.coinAmount = this.item.price.split(".")[1];
   },
   methods: {
-    addCartItem: function(isRecommended = false) {
+    addCartItem: function() {
       // push the item to the store
       this.$store.dispatch("addCartItem", this.item);
-
-      if (!isRecommended) {
-        this.$store.dispatch("setSelectedItem", this.item);
-        this.$store.dispatch("setRecommendedModal", true);
-      }
+      this.$store.dispatch("setSelectedItem", this.item);
+      this.$store.dispatch("setRecommendedModal", true);
     },
   },
 };

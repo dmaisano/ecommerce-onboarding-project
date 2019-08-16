@@ -4,14 +4,21 @@
       class="bg-gray-900 pl-4 md:pr-4 py-4 w-full inline-flex items-center justify-between"
     >
       <div id="brand" class="inline-flex items-center select-none">
-        <img src="../assets/logo.png" alt="logo" class="w-1/5" />
-        <h1 class="text-2xl md:text-3xl font-semibold pl-4 text-gray-300">
+        <router-link to="/" class="w-1/5">
+          <img src="../assets/logo.png" alt="logo" />
+        </router-link>
+        <router-link
+          to="/"
+          class="text-2xl md:text-3xl font-semibold pl-4 text-gray-300"
+        >
           Snow Joe
-        </h1>
+        </router-link>
       </div>
 
-      <div
-        id="cart"
+      <router-link
+        v-if="routePath !== '/cart'"
+        id="cart-btn"
+        to="/cart"
         class="font-medium inline-flex items-center px-4 text-gray-400 cursor-pointer hover:font-bold hover:text-white"
         @click="toggleCart(true)"
       >
@@ -38,34 +45,27 @@
         >
           {{ cart.totalItems }}
         </span>
-      </div>
+      </router-link>
     </header>
   </div>
 </template>
 
 <script>
-import Modal from "./Modal";
+import { mapState } from "vuex";
 
 export default {
   name: "Header",
-  components: {
-    Modal,
+  data: function() {
+    return {
+      routePath: this.$route.path,
+    };
   },
   computed: {
-    cart: function() {
-      return this.$store.getters.cart;
-    },
-    cartTotal: function() {
-      return this.$store.getters.cartTotal;
-    },
-    cartModal: function() {
-      return this.$store.getters.cartModal;
-    },
+    ...mapState(["cart"]),
   },
-  methods: {
-    toggleCart: function(payload) {
-      // console.log(payload);
-      this.$store.dispatch("setCartModal", payload);
+  watch: {
+    $route(to) {
+      this.routePath = to.path;
     },
   },
 };
@@ -80,11 +80,7 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
 }
 
-#cart img {
-  color: #fff;
-}
-
-#cart:hover > #cart-items {
+#cart-btn:hover > #cart-items {
   @apply bg-brand-400;
 }
 

@@ -1,83 +1,165 @@
 <template>
   <div class="home">
-    <ItemsList />
-  </div>
-
-  <!-- close breaks modal -->
-  <!-- <Modal
-    v-if="cartModal === true"
-    v-bind="{
-      customClass: 'cart-modal',
-      visibility: cartModal,
-      close: toggleCart(!cartModal),
-    }"
-  >
-    <h1 class="text-xl md:text-2xl text-gray-900 font-semibold text-center">
-      Shopping Cart
-    </h1>
-    <div class="cart-table-head mt-3 mb-2">
-      <p class="inline-flex items-center text-lg font-semibold">
-        Item
-      </p>
-      <p class="inline-flex items-center text-lg font-semibold">
-        Unit Price
-      </p>
-      <p class="inline-flex items-center text-lg font-semibold uppercase">
-        QTY
-      </p>
-      <p class="inline-flex items-center text-lg font-semibold">
-        Total
-      </p>
+    <div id="list-wrapper">
+      <Item
+        id="item"
+        class="mb-6 md:mb-0"
+        v-for="(item, index) in shoppingItems"
+        :key="index"
+        :item="item"
+      />
     </div>
-    <div
-      class="cart-table-item text-sm md:text-base"
-      v-for="(item, index) in cart.items"
-      :key="index"
+
+    <Modal
+      id="recommended-modal"
+      v-if="modalVisibility"
+      v-bind="{
+        customClass: 'recommended-modal',
+        visibility: modalVisibility && selectedItem,
+        close: toggleModal,
+      }"
     >
-      <p class="text-justify block md:hidden">
-        {{ item.modelNumber }}
-      </p>
-      <p class="text-justify hidden md:block">
-        {{ item.name | truncate }}
-      </p>
-      <p class="inline-flex items-center font-semibold">${{ item.price }}</p>
-      <p class="inline-flex items-center">
-        {{ item.quantity }}
-      </p>
-      <p class="inline-flex items-center font-semibold">
-        {{ (item.price * item.quantity) | price }}
-      </p>
-    </div>
+      <div>
+        <h1 class="text-3xl flex justify-start border-b-4 border-brand-500">
+          Want to add one of these?
+        </h1>
+        <div class="mt-1 text-gray-600 font-semibold">
+          <span>Customers who bought the </span>
+          <span class="text-gray-900 font-extrabold">{{
+            selectedItem.name
+          }}</span>
+          <span> also bought these popular items:</span>
+        </div>
+        <div id="item-wrapper" class="mt-2">
+          <Item
+            v-for="(item, key) in recommendedItems"
+            :key="key"
+            id="item"
+            v-bind="{
+              item,
+              recommendedItem: true,
+            }"
+          />
+        </div>
 
-    <p class="mt-4 text-lg flex justify-center">
-      <span class="text-gray-800 font-semibold">Total: </span>
-      <span class="ml-2">{{ cartTotal | price }}</span>
-    </p>
+        <div class="mt-2">
+          <button class="btn btn-brand-solid w-full" @click="addAllRecommended">
+            Add These {{ recommendedItems.length }} Items and save 10%
+          </button>
 
-    <div class="mt-4 cart-actions w-full flex flex-col md:flex-row md:-mx-1">
-      <button
-        @click="toggleCart(false)"
-        class="mb-2 mx-auto md:mx-1 md:mb-0 w-3/4 md:w-1/2 btn btn-brand"
-      >
-        Keep Shopping
-      </button>
-      <button
-        @click="toggleCart(false)"
-        class="mx-auto md:mx-1 w-3/4 md:w-1/2 btn btn-brand-solid"
-      >
-        Checkout
-      </button>
-    </div>
-  </Modal> -->
+          <div class="pt-4 flex items-start justify-end -mx-2">
+            <div class="px-2">
+              <button
+                class="block mt-1 text-gray-700 capitalize underline hover:text-gray-900 focus:font-bold focus:shadow-none"
+                style="box-shadow: none;"
+                @click="toggleModal"
+              >
+                No Thanks
+              </button>
+            </div>
+            <div class="px-2">
+              <router-link to="/cart" class="btn btn-brand" @click="checkout">
+                Continue To Checkout
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
 </template>
 
 <script>
-import ItemsList from "@/components/ItemsList.vue";
+import Item from "@/components/Item.vue";
+import Modal from "@/components/Modal.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "home",
   components: {
-    ItemsList,
+    Item,
+    Modal,
+  },
+  data() {
+    return {
+      items: [],
+      modalVisibility: false,
+      recommendedItems: [],
+    };
+  },
+  computed: {
+    ...mapState(["shoppingItems", "selectedItem", "recommendedModal"]),
+  },
+  watch: {
+    recommendedModal() {
+      this.modalVisibility = this.$store.getters.recommendedModal;
+    },
+    selectedItem() {
+      this.recommendedItems = this.$store.getters.recommendedItems;
+    },
+  },
+  mounted: async function() {
+    // ? using fetch here in order to simulate retrieving data via HTTP through an arbitrary DB or backend API
+    // could also use await here if desired (async/await)
+    fetch("/items.json")
+      .then((response) => response.json())
+      .then((items) => {
+        return this.$store.dispatch("setShoppingItems", items);
+      })
+      .catch((error) => {
+        console.error({
+          error,
+        });
+      });
+  },
+  methods: {
+    toggleModal: function() {
+      this.$store.dispatch("setRecommendedModal", !this.recommendedModal);
+    },
+    addAllRecommended: function() {
+      for (const item of this.recommendedItems) {
+        this.$store.dispatch("addCartItem", item);
+      }
+    },
+    checkout: function() {
+      this.$store.dispatch("setRecommendedModal", false);
+    },
+    watch: {
+      // $route() {
+      //   // ensure modal is closed on navigation
+      //   this.$store.dispatch("setRecommendedModal", false);
+      // },
+    },
   },
 };
 </script>
+
+<style lang="postcss" scoped>
+#item:last-child {
+  margin-bottom: 0;
+}
+
+#recommended-modal >>> #item:first-child {
+  border-top: 2px solid black;
+}
+
+@media screen and (min-width: 768px) {
+  #list-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #recommended-modal >>> #item:first-child {
+    border-top: none;
+  }
+
+  #recommended-modal >>> #item-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 0.5rem;
+  }
+}
+</style>
