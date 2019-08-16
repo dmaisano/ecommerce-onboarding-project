@@ -5,37 +5,41 @@
     </h1>
 
     <div v-if="cart.items.length">
-      <div class="cart-table-head mt-3 mb-2">
-        <p class="inline-flex items-center text-lg font-semibold">
+      <div class="cart-table-head mt-3 mb-2 -mx-2">
+        <p class="px-2 w-2/5 inline-flex items-center text-lg font-semibold">
           Item
         </p>
-        <p class="inline-flex items-center text-lg font-semibold">
+        <p class="px-2 w-1/5 inline-flex items-center text-lg font-semibold">
           Unit Price
         </p>
-        <p class="inline-flex items-center text-lg font-semibold uppercase">
+        <p
+          class="px-2 w-1/5 inline-flex items-center text-lg font-semibold uppercase"
+        >
           QTY
         </p>
-        <p class="inline-flex items-center text-lg font-semibold">
+        <p class="px-2 w-1/5 inline-flex items-center text-lg font-semibold">
           Total
         </p>
       </div>
       <div
-        class="cart-table-item text-sm md:text-base"
+        class="cart-table-head mt-3 mb-2 -mx-2"
         v-for="(item, index) in cart.items"
         :key="index"
       >
-        <p class="text-justify block md:hidden">
+        <p class="px-2 w-2/5 inline-flex md:hidden items-center">
           {{ item.modelNumber }}
         </p>
-        <p class="text-justify hidden md:block">
-          {{ item.name | truncate }}
+        <p class="px-2 w-2/5 hidden md:inline-flex items-center">
+          {{ item.name | truncate(50) }}
         </p>
-        <p class="inline-flex items-center font-semibold">${{ item.price }}</p>
-        <p class="inline-flex items-center">
+        <p class="px-2 w-1/5 inline-flex items-center font-semibold">
+          ${{ item.price }}
+        </p>
+        <p class="px-2 w-1/5 inline-flex items-center uppercase">
           {{ item.quantity }}
         </p>
-        <p class="inline-flex items-center font-semibold">
-          {{ (item.price * item.quantity) | price }}
+        <p class="px-2 w-1/5 inline-flex items-center font-semibold">
+          {{ item.price * item.quantity }}
         </p>
       </div>
 
@@ -82,7 +86,6 @@ export default {
       return this.$store.getters.cartTotal;
     },
   },
-  watch: {},
   mounted: function() {},
 };
 </script>

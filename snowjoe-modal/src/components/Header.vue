@@ -64,7 +64,7 @@ export default {
     ...mapState(["cart"]),
   },
   watch: {
-    $route(to) {
+    $route: function(to) {
       this.routePath = to.path;
     },
   },
@@ -82,12 +82,5 @@ export default {
 
 #cart-btn:hover > #cart-items {
   @apply bg-brand-400;
-}
-
-.modal .cart-table-head,
-.modal .cart-table-item {
-  display: grid;
-  grid-template-columns: 2fr 1fr 0.5fr 1fr;
-  grid-column-gap: 0.5rem;
 }
 </style>

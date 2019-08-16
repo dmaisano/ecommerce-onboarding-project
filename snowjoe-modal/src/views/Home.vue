@@ -58,9 +58,9 @@
               </button>
             </div>
             <div class="px-2">
-              <router-link to="/cart" class="btn btn-brand" @click="checkout">
+              <button class="btn btn-brand" @click="checkout">
                 Continue To Checkout
-              </router-link>
+              </button>
             </div>
           </div>
         </div>
@@ -91,16 +91,17 @@ export default {
     ...mapState(["shoppingItems", "selectedItem", "recommendedModal"]),
   },
   watch: {
-    recommendedModal() {
+    recommendedModal: function() {
       this.modalVisibility = this.$store.getters.recommendedModal;
     },
-    selectedItem() {
+    selectedItem: function() {
       this.recommendedItems = this.$store.getters.recommendedItems;
     },
   },
   mounted: async function() {
     // ? using fetch here in order to simulate retrieving data via HTTP through an arbitrary DB or backend API
     // could also use await here if desired (async/await)
+    // ideally it would be best to use something like sessionStorage to cache the data in order to mitigate network traffic
     fetch("/items.json")
       .then((response) => response.json())
       .then((items) => {
@@ -123,12 +124,7 @@ export default {
     },
     checkout: function() {
       this.$store.dispatch("setRecommendedModal", false);
-    },
-    watch: {
-      // $route() {
-      //   // ensure modal is closed on navigation
-      //   this.$store.dispatch("setRecommendedModal", false);
-      // },
+      this.$router.push({ path: "cart" });
     },
   },
 };

@@ -77,7 +77,7 @@
             id="add-cart-btn"
             class="block mt-1 text-gray-700 capitalize hover:text-gray-900 focus:font-bold focus:shadow-none"
             style="box-shadow: none;"
-            @click="addCartItem(true)"
+            @click="addModalCartItem()"
           >
             Add To Cart
           </button>
@@ -118,7 +118,7 @@
           <div id="add-cart-btn">
             <button
               class="mt-auto w-full btn btn-brand-solid"
-              @click="addCartItem(true)"
+              @click="addModalCartItem()"
             >
               Add To Cart
             </button>
@@ -132,7 +132,7 @@
 <script>
 export default {
   name: "Item",
-  data() {
+  data: function() {
     return {
       imageUrl: "",
       dollarAmount: 0,
@@ -159,6 +159,10 @@ export default {
       this.$store.dispatch("addCartItem", this.item);
       this.$store.dispatch("setSelectedItem", this.item);
       this.$store.dispatch("setRecommendedModal", true);
+    },
+    addModalCartItem: function() {
+      // push the item to the store
+      this.$store.dispatch("addCartItem", this.item);
     },
   },
 };
