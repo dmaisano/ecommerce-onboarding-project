@@ -6,38 +6,30 @@ Vue.config.productionTip = false;
 
 // custom filters
 Vue.filter("truncate", function(text, maxLength = 30) {
-  if (text.length >= maxLength) {
-    const words = text.split(" ");
+  if (text.length < maxLength) return text.trim();
 
-    let res = "";
-    for (const word of words) {
-      if (res.length < maxLength) {
-        console.log("i ran");
-        res += ` ${word}`;
-      } else {
-        break;
-      }
+  let res = "";
+  for (const word of text.split(" ")) {
+    if (res.length + word.length + 1 <= maxLength) {
+      res += ` ${word}`;
+    } else if (res.length + word.length + 1 <= maxLength) {
+      res += word;
+    } else {
+      break;
     }
-
-    return `${res.trim()}...`;
-  } else {
-    return text.trim();
   }
+
+  return `${res.trim()}...`;
+
+  // if (text.length >= maxLength) {
+  //   return `${text.substring(0, maxLength).trim()}...`;
+  // } else {
+  //   return text.trim();
+  // }
 });
 
 Vue.filter("price", function(itemPrice) {
-  itemPrice = `$${itemPrice}`;
-
-  if (!itemPrice.includes(".")) {
-    return `${itemPrice}.00`;
-  }
-
-  // missing a trailing zero
-  if (itemPrice.split(".")[1].length === 1) {
-    return `${itemPrice}0`;
-  }
-
-  return itemPrice;
+  return `$${itemPrice.toFixed(2)}`;
 });
 
 new Vue({

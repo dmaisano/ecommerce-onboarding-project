@@ -42,14 +42,14 @@
     </header>
 
     <Modal
+      v-if="cart.items.length && cartVisiblity"
       v-bind="{
         customClass: 'cart-modal',
         visibility: cartVisiblity,
         close: toggleCart,
-        defaultClose: true,
       }"
     >
-      <h1 class="text-lg md:text-2xl text-gray-900 font-semibold text-center">
+      <h1 class="text-xl md:text-2xl text-gray-900 font-semibold text-center">
         Shopping Cart
       </h1>
       <div class="cart-table-head mt-3 mb-2">
@@ -67,12 +67,15 @@
         </p>
       </div>
       <div
-        class="cart-table-item"
+        class="cart-table-item text-sm md:text-base"
         v-for="(item, index) in cart.items"
         :key="index"
       >
-        <p class="inline-flex items-center">
-          {{ item.name }}
+        <p class="text-justify block md:hidden">
+          {{ item.name | truncate(12) }}
+        </p>
+        <p class="text-justify hidden md:block">
+          {{ item.name | truncate }}
         </p>
         <p class="inline-flex items-center font-semibold">${{ item.price }}</p>
         <p class="inline-flex items-center">
@@ -82,6 +85,12 @@
           {{ (item.price * item.quantity) | price }}
         </p>
       </div>
+
+      <p class="mt-4 text-lg flex justify-center">
+        <span class="text-gray-800 font-semibold">Total: </span>
+        <span class="ml-2">{{ cartTotal | price }}</span>
+      </p>
+
       <div class="mt-4 cart-actions w-full flex flex-col md:flex-row md:-mx-1">
         <button
           @click="toggleCart"
@@ -117,6 +126,9 @@ export default {
     cart: function() {
       return this.$store.getters.cart;
     },
+    cartTotal() {
+      return this.$store.getters.cartTotal;
+    },
   },
   methods: {
     toggleCart: function() {
@@ -147,5 +159,6 @@ export default {
 .modal .cart-table-item {
   display: grid;
   grid-template-columns: 2fr 1fr 0.5fr 1fr;
+  grid-column-gap: 0.5rem;
 }
 </style>

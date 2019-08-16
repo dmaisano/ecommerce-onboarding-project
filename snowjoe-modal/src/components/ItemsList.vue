@@ -7,25 +7,70 @@
         v-for="(item, index) in items"
         :key="index"
         :item="item"
-      ></Item>
+      />
     </div>
 
-    <!-- <Modal> </Modal> -->
+    <Modal
+      id="recommended-modal"
+      v-if="recommendedModal && selectedItem"
+      v-bind="{
+        customClass: 'recommended-modal',
+        visibility: recommendedModal,
+        close: toggleModal,
+      }"
+    >
+      <div>
+        <h1 class="text-3xl flex justify-start border-b-4 border-brand-500">
+          Want to add one of these?
+        </h1>
+        <div class="mt-1 text-gray-600 font-semibold">
+          <span>Customers who bought the </span>
+          <span class="text-gray-900 font-extrabold">{{
+            selectedItem.name
+          }}</span>
+          <span> also bought these popular items:</span>
+        </div>
+        <div id="item-wrapper" class="mt-2">
+          <Item
+            v-for="(item, key) in recommendedItems"
+            :key="key"
+            id="item"
+            v-bind="{
+              item,
+              recommendedItem: true,
+            }"
+          />
+        </div>
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script>
 import Item from "./Item";
+import Modal from "./Modal";
 
 export default {
   name: "Items-List",
   components: {
     Item,
+    Modal,
   },
   data() {
     return {
       items: [],
     };
+  },
+  computed: {
+    selectedItem: function() {
+      return this.$store.getters.selectedItem;
+    },
+    recommendedItems: function() {
+      return this.$store.getters.recommendedItems;
+    },
+    recommendedModal: function() {
+      return this.$store.getters.recommendedModal;
+    },
   },
   mounted: async function() {
     try {
@@ -41,9 +86,12 @@ export default {
       console.error({
         error,
       });
-
-      // TODO: show error modal
     }
+  },
+  methods: {
+    toggleModal: function() {
+      this.$store.dispatch("setRecommendedModal", !this.recommendedModal);
+    },
   },
 };
 </script>
@@ -53,11 +101,27 @@ export default {
   margin-bottom: 0;
 }
 
+#recommended-modal >>> #item:first-child {
+  border-top: 2px solid black;
+}
+
 @media screen and (min-width: 768px) {
   #list-wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #recommended-modal >>> #item:first-child {
+    border-top: none;
+  }
+
+  #recommended-modal >>> #item-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 0.5rem;
   }
 }
 </style>

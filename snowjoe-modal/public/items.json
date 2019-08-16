@@ -8,7 +8,13 @@
       "static": "https://snowjoe.imgix.net/product-images/SPX3000-3.jpg?auto=compress&fm=webp&w=300",
       "hover": "https://snowjoe.imgix.net/product-images/SPX3000_01.jpg?auto=compress&fm=webp&w=300"
     },
-    "price": "149.50"
+    "price": "149.50",
+    "recommended": [
+      "a8119327-6044-45ae-b59e-6c282f62c129",
+      "f67e0bf3-1c1f-4f90-a75f-5af77999ba3f",
+      "b735a9fa-d2cf-4979-9278-d7e883042bb0",
+      "0852e39f-65ac-4b90-ae07-eb269aea0a28"
+    ]
   },
   {
     "id": "46fe68dd-e328-4b10-9533-1bf314a8c20c",
@@ -20,6 +26,12 @@
       "hover": "https://snowjoe.imgix.net/product-images/SPX3000MAX_Image02.jpg?auto=compress&fm=webp&w=300"
     },
     "price": "189.99",
+    "recommended": [
+      "a8119327-6044-45ae-b59e-6c282f62c129",
+      "f67e0bf3-1c1f-4f90-a75f-5af77999ba3f",
+      "b735a9fa-d2cf-4979-9278-d7e883042bb0",
+      "0852e39f-65ac-4b90-ae07-eb269aea0a28"
+    ],
     "onSale": true
   },
   {
@@ -31,7 +43,13 @@
       "static": "https://snowjoe.imgix.net/product-images/SPX1501-5.jpg?auto=compress&fm=webp&w=300",
       "hover": "https://snowjoe.imgix.net/product-images/SPX1501-2.jpg?auto=compress&fm=webp&w=300"
     },
-    "price": "119.00"
+    "price": "119.00",
+    "recommended": [
+      "a8119327-6044-45ae-b59e-6c282f62c129",
+      "f67e0bf3-1c1f-4f90-a75f-5af77999ba3f",
+      "b735a9fa-d2cf-4979-9278-d7e883042bb0",
+      "0852e39f-65ac-4b90-ae07-eb269aea0a28"
+    ]
   },
   {
     "id": "430388f0-b8bb-447f-a263-3439297797ea",
@@ -42,7 +60,13 @@
       "static": "https://snowjoe.imgix.net/product-images/SPX3001_unit1_4-8-2016-10-42-26.jpg?auto=compress&fm=webp&w=300",
       "hover": "https://snowjoe.imgix.net/product-images/SPX3001_01.jpg?auto=compress&fm=webp&w=300"
     },
-    "price": "179.00"
+    "price": "179.00",
+    "recommended": [
+      "a8119327-6044-45ae-b59e-6c282f62c129",
+      "f67e0bf3-1c1f-4f90-a75f-5af77999ba3f",
+      "b735a9fa-d2cf-4979-9278-d7e883042bb0",
+      "0852e39f-65ac-4b90-ae07-eb269aea0a28"
+    ]
   },
   {
     "id": "a8119327-6044-45ae-b59e-6c282f62c129",
@@ -54,7 +78,12 @@
       "hover": "https://snowjoe.imgix.net/product-images/SPX25-HD_Image3_3000x3000.jpg?auto=compress&fm=webp&w=300"
     },
     "price": "34.99",
-    "recommended": true
+    "recommended": [
+      "a8119327-6044-45ae-b59e-6c282f62c129",
+      "f67e0bf3-1c1f-4f90-a75f-5af77999ba3f",
+      "b735a9fa-d2cf-4979-9278-d7e883042bb0",
+      "0852e39f-65ac-4b90-ae07-eb269aea0a28"
+    ]
   },
   {
     "id": "f67e0bf3-1c1f-4f90-a75f-5af77999ba3f",
@@ -66,7 +95,12 @@
       "hover": "https://snowjoe.imgix.net/product-images/Spx-FC34_3.jpg?auto=compress&fm=webp&w=300"
     },
     "price": "39.99",
-    "recommended": true
+    "recommended": [
+      "a8119327-6044-45ae-b59e-6c282f62c129",
+      "f67e0bf3-1c1f-4f90-a75f-5af77999ba3f",
+      "b735a9fa-d2cf-4979-9278-d7e883042bb0",
+      "0852e39f-65ac-4b90-ae07-eb269aea0a28"
+    ]
   },
   {
     "id": "b735a9fa-d2cf-4979-9278-d7e883042bb0",
@@ -78,7 +112,12 @@
       "hover": "https://snowjoe.imgix.net/product-images/Spx-PWB1_4.jpg?auto=compress&fm=webp&w=300"
     },
     "price": "39.99",
-    "recommended": true
+    "recommended": [
+      "a8119327-6044-45ae-b59e-6c282f62c129",
+      "f67e0bf3-1c1f-4f90-a75f-5af77999ba3f",
+      "b735a9fa-d2cf-4979-9278-d7e883042bb0",
+      "0852e39f-65ac-4b90-ae07-eb269aea0a28"
+    ]
   },
   {
     "id": "0852e39f-65ac-4b90-ae07-eb269aea0a28",
@@ -86,10 +125,15 @@
     "name": "Sun Joe All-Purpose Heavy Duty Pressure Washer Rated Cleaner + Degreaser",
     "description": "Cleaner + Degreaser | 1 Gal.",
     "image": {
-      "static": "https://snowjoe.imgix.net/product-images/SPX-APC1G-01.jpg?auto=compress&fm=webp&w=300",
-      "hover": "https://snowjoe.imgix.net/product-images/SPX-APC1G-03.jpg?auto=compress&fm=webp&w=300"
+      "static": "https://snowjoe.imgix.net/product-images/SPX-APC1G-03.jpg?auto=compress&fm=webp&w=300",
+      "hover": "https://snowjoe.imgix.net/product-images/SPX-APC1G-01.jpg?auto=compress&fm=webp&w=300"
     },
     "price": "19.99",
-    "recommended": true
+    "recommended": [
+      "a8119327-6044-45ae-b59e-6c282f62c129",
+      "f67e0bf3-1c1f-4f90-a75f-5af77999ba3f",
+      "b735a9fa-d2cf-4979-9278-d7e883042bb0",
+      "0852e39f-65ac-4b90-ae07-eb269aea0a28"
+    ]
   }
 ]
