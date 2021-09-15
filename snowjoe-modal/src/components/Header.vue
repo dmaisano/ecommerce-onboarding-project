@@ -4,14 +4,11 @@
       class="bg-gray-900 pl-4 md:pr-4 py-4 w-full inline-flex items-center justify-between"
     >
       <div id="brand" class="inline-flex items-center select-none">
-        <router-link to="/" class="w-1/5">
-          <img src="../assets/logo.png" alt="logo" />
-        </router-link>
         <router-link
           to="/"
           class="text-2xl md:text-3xl font-semibold pl-4 text-gray-300"
         >
-          Snow Joe
+          Brand
         </router-link>
       </div>
 
